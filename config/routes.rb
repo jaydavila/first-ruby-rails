@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # get 'users/index'
   # get 'users/new'
   # get 'users/show'
@@ -9,7 +10,10 @@ Rails.application.routes.draw do
 
   get '/feed', to: 'posts#feed'
 
-  get '/' => 'users#index'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+
 
     root 'users#index'
 
