@@ -1,4 +1,14 @@
 class User < ApplicationRecord
+
+  validates_presence_of :username
+  validates :password, confirmation: { message: 'Passwords did not match' }
+
+  after_save :send_email
+
+  def send_email
+    Sendgrid.send(email)
+  end
+
   def full_name
     fname + " " + username
   end
