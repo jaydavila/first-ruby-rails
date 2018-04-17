@@ -1,10 +1,23 @@
-<h1>Users#index</h1>
+<%= page_heading ('Users#index')%>
+
 <p>Find me in app/views/users/index.html.erb</p>
 
-<%  @users.each do |user| %>
-   <h2>
-     <%= link_to(user.username, user_path(user)) %>
-     <!-- <a href='/users/<%= user.id %>'> <%= user.username %></a> -->
-   </h2>
-   <p> <%= user.fname %></p>
-<% end %>
+           <%= link_to  'create a new user', new_user_path %>
+
+          <% @users.each do |user|%>
+
+          <%= render 'user' , user: user%>
+
+          <% end %>
+
+<%= content_tag :h1, 'This is generated tag!' %>
+
+<%= content_tag :p, "This is a paragraph #{@users[0].username}!", class: 'my-p-tags' %>
+
+          <% content_tag :ul do %>
+             <% @users.each do |user| %>
+               <%= content_tag :li, user.username%>
+                 <% end %>
+               <% end %>
+
+<%= collection_select(:user, :user_id, User.all, :id, :username)%>
