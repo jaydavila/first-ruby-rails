@@ -2,7 +2,11 @@
 
 <p>Find me in app/views/users/index.html.erb</p>
 
-           <%= link_to  'create a new user', new_user_path %>
+          <p> <%= link_to  'create a new user', new_user_path %></p>
+
+            <% @new_users.each do |user| %>
+                <p><strong><%= user.username %></strong></p>
+            <% end %>
 
           <% @users.each do |user|%>
 
