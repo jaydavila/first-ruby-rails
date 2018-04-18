@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   validates_presence_of :username
-  validates :password, confirmation: { message: 'Passwords did not match' }
+  # validates :password, confirmation: { message: 'Passwords did not match' }
 
   scope :created_since_yesterday, -> {
      where('created_at between ? and ?', Time.now-1.day, Time.now)
